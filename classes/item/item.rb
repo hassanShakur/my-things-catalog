@@ -1,14 +1,14 @@
 class Item
   attr_accessor :genre, :author, :source, :label, :publish_date
 
-  def initialize()
+  def initialize(publish_date, archived)
     @id = Time.new.to_i
     @genre = nil
     @author = nil
     @source = nil
     @label = nil
-    @publish_date = nil
-    @archived = false
+    @publish_date = publish_date
+    @archived = archived
   end
 
   def move_to_archive
