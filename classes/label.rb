@@ -1,4 +1,6 @@
 class Label
+  attr_accessor :title, :color
+
   def initialize(title, color)
     @id = Time.new.to_i
     @title = title
