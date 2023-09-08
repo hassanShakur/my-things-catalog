@@ -7,7 +7,7 @@ class Item
     @author = nil
     @source = nil
     @label = nil
-    @publish_date = Time.new(publish_date)
+    @publish_date = Time.new(publish_date.to_s)
     @archived = false
   end
 
