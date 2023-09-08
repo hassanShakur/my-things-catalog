@@ -1,14 +1,14 @@
 require_relative 'item'
 
 class MusicAlbum < Item
-  def initialize(_author, on_spotify, publish_date, archived)
-    super(publish_date, archived)
+  def initialize(_author, on_spotify, publish_date)
+    super(publish_date)
     @on_spotify = on_spotify
   end
 
   private
 
   def can_be_archived?
-    true
+    super && @on_spotify
   end
 end

@@ -1,23 +1,23 @@
 class Item
   attr_accessor :genre, :author, :source, :label, :publish_date
 
-  def initialize(publish_date, archived)
+  def initialize(publish_date)
     @id = Time.new.to_i
     @genre = nil
     @author = nil
     @source = nil
     @label = nil
-    @publish_date = publish_date
-    @archived = archived
+    @publish_date = Time.new(publish_date)
+    @archived = false
   end
 
   def move_to_archive
-    @archived = true
+    @archived = can_be_archived?
   end
 
   private
 
   def can_be_archived?
-    true
+    (Time.new.year - @publish_date.year) > 10
   end
 end
