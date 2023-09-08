@@ -1,12 +1,12 @@
 class Item
   attr_accessor :genre, :author, :source, :label, :publish_date
 
-  def initialize(author, genre, source, label)
+  def initialize(author)
     @id = Time.new.to_i
-    @genre = genre
+    @genre = nil
     @author = author
-    @source = source
-    @label = label
+    @source = nil
+    @label = nil
     @publish_date = nil
     @archived = false
   end
@@ -17,5 +17,7 @@ class Item
 
   private
 
-  def can_be_archived?; end
+  def can_be_archived?
+    true
+  end
 end

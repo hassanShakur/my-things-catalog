@@ -1,13 +1,13 @@
 class Source
-    attr_accessor :name
+  attr_accessor :name
 
-    def initialize(name)
-        @id = Time.new.to_i
-        @name = name
-        @items = []
-    end
+  def initialize(name)
+    @id = Time.new.to_i
+    @name = name
+    @items = []
+  end
 
-    def add_item(item)
-        @items << item
-    end
+  def add_item(item)
+    @items << item
+  end
 end
