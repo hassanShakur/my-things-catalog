@@ -3,11 +3,11 @@ class Genre
 
   def initialize(name)
     @name = name
-    @id = Time.new.to_f
+    @id = Time.new.to_i
     @items = []
   end
 
   def add_item(item)
-    @items.push(item)
+    @items << item
   end
 end
