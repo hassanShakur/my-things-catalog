@@ -1,38 +1,55 @@
 module ItemPresenters
   def display_books
-    print_border
-    show_list_title('Books')
-
-    @books.each_with_index do |book, index|
-      show_item_title('Book', index)
-      show_item_attributes(book)
-    end
-
-    print_border
+    display_logic_for(Book)
   end
 
   def display_games
-    print_border
-    show_list_title('Games')
+    display_logic_for(Game)
+    # print_border
+    # show_list_title('Games')
 
-    @games.each_with_index do |game, index|
-      show_item_title('Game', index)
-      show_item_attributes(game)
+    # @games.each_with_index do |game, index|
+    #   show_item_title('Game', index)
+    #   show_item_attributes(game)
+    # end
+
+    # print_border
+  end
+
+  def display_movies
+    display_logic_for(Movie)
+  end
+
+  def display_music_albums
+    display_logic_for(MusicAlbum)
+  end
+
+  def display_logic_for(item_class)
+    print_border
+    show_list_title(item_class)
+    item_app_list = fetch_app_list_for(item_class)
+
+    item_app_list.each_with_index do |item, index|
+      show_item_title(item_class.class.to_s, index)
+      show_item_attributes(item)
     end
 
     print_border
   end
 
-  def display_music_albums
-    print_border
-    show_list_title('Music Albums')
-
-    @music_albums.each_with_index do |album, index|
-      show_item_title('Album', index)
-      show_item_attributes(album)
+  def fetch_app_list_for(item)
+    case item.class
+    when 'Book'
+      @books
+    when 'Movie'
+      @movies
+    when 'Game'
+      @games
+    when 'MusicAlbum'
+      @music_albums
+    else
+      []
     end
-
-    print_border
   end
 
   def show_item_attributes(item)
@@ -43,5 +60,22 @@ module ItemPresenters
     puts "Source: #{item.source.name}" if item.source
     puts "Label: #{item.label.title}" if item.label
     puts "Publish date: #{date.day}/#{date.month}/#{date.year}"
+  end
+
+  def show_unique_attributes(item)
+    case item.class
+    when 'Book'
+      puts "Publisher: #{item.publisher}"
+      puts "Cover state: #{item.cover_state}"
+    when 'Game'
+      puts "Multiplayer: #{item.multiplayer}"
+      puts "Last played at: #{item.last_played_at}"
+    when 'Movie'
+      puts "Silent: #{item.silent}"
+    when 'MusicAlbum'
+      puts "On spotify: #{item.on_spotify}"
+    else
+      puts ''
+    end
   end
 end

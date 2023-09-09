@@ -5,12 +5,12 @@ def main
   app.run
 
   loop do
-    app.show_options
+    app.show_initial_options
     input = gets.chomp.to_i
-    choice = app.validate_input(input, 7)
-    break if choice == 7
+    choice = app.validate_input(input, 5)
+    break if choice == 5
 
-    app.call_activity_for(choice)
+    app.show_extra_options(choice)
   end
 
   app.save_data

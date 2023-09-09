@@ -23,8 +23,18 @@ module DataPresenters
     print_border
     show_list_title('Author')
 
-    @authors.each_with_index do |_author, index|
-      puts "#{index + 1}. #{item.author.first_name} #{item.author.last_name}"
+    @authors.each_with_index do |author, index|
+      puts "#{index + 1}. #{author.author.first_name} #{item.author.last_name}"
+    end
+    print_border
+  end
+
+  def display_sources
+    print_border
+    show_list_title('Source')
+
+    @sources.each_with_index do |source, index|
+      puts "#{index + 1}. #{source.name}"
     end
     print_border
   end
