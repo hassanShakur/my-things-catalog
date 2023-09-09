@@ -5,13 +5,13 @@ module DataFetchers
   end
 
   def fetch_date(date_type = 'publish date')
-    date = fetch_string("#{date_type}(yy/mm/dd)")
-    date.split('/').join(', ')
+    fetch_string("#{date_type} [yy/mm/dd]")
   end
 
-  def fetch_valid_bool
+  def fetch_valid_bool(title)
     map_bool = { 'n' => false, 'y' => true }
     my_bool = nil
+    print "#{title.capitalize} [y/n]: "
 
     loop do
       my_bool = map_bool[gets.chomp.downcase]

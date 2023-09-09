@@ -15,13 +15,13 @@ module OptionsRouter
     when 1
       show_list_ref_options
       choice = validate_input(gets.chomp.to_i, 5)
-      break if choice == 5
+      return if choice == 5
 
       list_refs(choice)
     when 3
       show_create_ref_options
       choice = validate_input(gets.chomp.to_i, 5)
-      break if choice == 5
+      return if choice == 5
 
       create_ref(choice)
     else
@@ -34,13 +34,13 @@ module OptionsRouter
     when 2
       show_list_item_options
       choice = validate_input(gets.chomp.to_i, 5)
-      break if choice == 5
+      return if choice == 5
 
       list_items(choice)
     when 4
       show_create_item_options
       choice = validate_input(gets.chomp.to_i, 5)
-      break if choice == 5
+      return if choice == 5
 
       create_item(choice)
     else

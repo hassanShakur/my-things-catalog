@@ -19,6 +19,8 @@ require_relative 'modules/input_validators'
 require_relative 'modules/item_creators'
 require_relative 'modules/item_presenters'
 require_relative 'modules/object_creators'
+require_relative 'modules/options_display'
+require_relative 'modules/options_router'
 require_relative 'modules/ui_beautifiers'
 require_relative 'modules/user_feedback'
 

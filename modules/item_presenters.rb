@@ -1,81 +1,74 @@
 module ItemPresenters
   def display_books
-    display_logic_for(Book)
+    print_border
+    show_list_title('Book')
+
+    @books.each_with_index do |book, index|
+      show_item_title('Book', index)
+      show_item_attributes(book)
+    end
+
+    print_border
   end
 
   def display_games
-    display_logic_for(Game)
-    # print_border
-    # show_list_title('Games')
+    print_border
+    show_list_title('Game')
 
-    # @games.each_with_index do |game, index|
-    #   show_item_title('Game', index)
-    #   show_item_attributes(game)
-    # end
+    @games.each_with_index do |game, index|
+      show_item_title('Game', index)
+      show_item_attributes(game)
+    end
 
-    # print_border
+    print_border
   end
 
   def display_movies
-    display_logic_for(Movie)
+    print_border
+    show_list_title('Movie')
+
+    @movies.each_with_index do |movie, index|
+      show_item_title('Movie', index)
+      show_item_attributes(movie)
+    end
+
+    print_border
   end
 
   def display_music_albums
-    display_logic_for(MusicAlbum)
-  end
-
-  def display_logic_for(item_class)
     print_border
-    show_list_title(item_class)
-    item_app_list = fetch_app_list_for(item_class)
+    show_list_title('Music album')
 
-    item_app_list.each_with_index do |item, index|
-      show_item_title(item_class.class.to_s, index)
-      show_item_attributes(item)
+    @music_albums.each_with_index do |music_album, index|
+      show_item_title('Music album', index)
+      show_item_attributes(music_album)
     end
 
     print_border
-  end
-
-  def fetch_app_list_for(item)
-    case item.class
-    when 'Book'
-      @books
-    when 'Movie'
-      @movies
-    when 'Game'
-      @games
-    when 'MusicAlbum'
-      @music_albums
-    else
-      []
-    end
   end
 
   def show_item_attributes(item)
     date = item.publish_date
+    show_unique_attributes(item)
 
     puts "Author: #{item.author.first_name} #{item.author.last_name}" if item.author
     puts "Genre: #{item.genre.name}" if item.genre
     puts "Source: #{item.source.name}" if item.source
     puts "Label: #{item.label.title}" if item.label
-    puts "Publish date: #{date.day}/#{date.month}/#{date.year}"
+    puts "Publish date: #{date.day}/#{date.month}/#{date.year}\n\n"
   end
 
   def show_unique_attributes(item)
-    case item.class
-    when 'Book'
+    if item.instance_of?(Book)
       puts "Publisher: #{item.publisher}"
       puts "Cover state: #{item.cover_state}"
-    when 'Game'
+    elsif item.instance_of?(Game)
       puts "Multiplayer: #{item.multiplayer}"
       puts "Last played at: #{item.last_played_at}"
-    when 'Movie'
+    elsif item.instance_of?(Movie)
       puts "Silent: #{item.silent}"
-    when 'MusicAlbum'
-      puts "On spotify: #{item.on_spotify}"
     else
-      puts ''
+      puts "On spotify: #{item.on_spotify}"
     end
   end
 end

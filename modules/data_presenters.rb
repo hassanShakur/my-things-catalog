@@ -24,7 +24,7 @@ module DataPresenters
     show_list_title('Author')
 
     @authors.each_with_index do |author, index|
-      puts "#{index + 1}. #{author.author.first_name} #{item.author.last_name}"
+      puts "#{index + 1}. #{author.first_name} #{author.last_name}"
     end
     print_border
   end

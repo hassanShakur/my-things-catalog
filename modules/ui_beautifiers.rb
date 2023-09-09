@@ -1,6 +1,6 @@
 module UIBeautifiers
   def print_border
-    puts "\n=============================================="
+    puts "\n======================================================"
   end
 
   def show_list_title(title)
@@ -8,6 +8,8 @@ module UIBeautifiers
   end
 
   def show_item_title(title, index)
-    puts "#{title.capitalize} #{index + 1}\n-------------------"
+    puts "------------------------\n"
+    puts "#{title.capitalize} #{index + 1}\n"
+    puts '------------------------'
   end
 end

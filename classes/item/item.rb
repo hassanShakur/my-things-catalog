@@ -7,7 +7,8 @@ class Item
     @author = nil
     @source = nil
     @label = nil
-    @publish_date = Time.new(publish_date.to_s)
+    pd_arr = publish_date.to_s.split('/')
+    @publish_date = Time.new(pd_arr[0], pd_arr[1], pd_arr[2])
     @archived = false
   end
 
