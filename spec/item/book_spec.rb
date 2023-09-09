@@ -2,7 +2,7 @@ require_relative '../../classes/item/book'
 
 describe Book do
   before :each do
-    @book = Book.new('Moran Publishers', 'bad', 2020)
+    @book = Book.new('Moran Publishers', 'bad', Time.now.year - 3)
   end
 
   describe '#new' do

@@ -4,7 +4,7 @@ require_relative '../classes/item/item'
 describe Author do
   before :each do
     @author = Author.new('Jane', 'Doe')
-    @item = Item.new(2020)
+    @item = Item.new(Time.now.year - 3)
   end
 
   describe '#new' do

@@ -17,6 +17,21 @@ CREATE TABLE IF NOT EXISTS books (
 );
 
 
+-- Create Games table
+CREATE TABLE IF NOT EXISTS games (
+    id INT GENERATED ALWAYS AS IDENTITY,
+    multiplayer BOOLEAN NOT NULL,
+    last_played_at DATE NOT NULL,
+    genre VARCHAR(100) REFERENCES genres(name),
+    author VARCHAR(100) REFERENCES authors(first_name),
+    source VARCHAR(100) REFERENCES sources(name),
+    label VARCHAR(100) REFERENCES labels(title),
+    publish_date DATE,
+    archived BOOLEAN,
+    PRIMARY KEY(id)
+);
+
+
 -- Create Music Albums table
 CREATE TABLE IF NOT EXISTS music_albums (
     id INT GENERATED ALWAYS AS IDENTITY,
@@ -45,6 +60,16 @@ CREATE TABLE IF NOT EXISTS labels (
 CREATE TABLE IF NOT EXISTS genres (
     id INT GENERATED ALWAYS AS IDENTITY,
     name VARCHAR(100),
+    items INT REFERENCES (books, music_albums, movies, games),
+    PRIMARY KEY(id, items)
+);
+
+
+-- Create Authors table
+CREATE TABLE IF NOT EXISTS authors (
+    id INT GENERATED ALWAYS AS IDENTITY,
+    first_name VARCHAR(100),
+    last_name VARCHAR(100),
     items INT REFERENCES (books, music_albums, movies, games),
     PRIMARY KEY(id, items)
 );

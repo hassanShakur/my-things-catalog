@@ -20,7 +20,7 @@ describe Genre do
 
   describe '#add_item' do
     it "adds itself to an item's genre property" do
-      @item = Item.new(2020)
+      @item = Item.new(Time.now.year - 3)
       @genre.add_item(@item)
       expect(@item.genre).to eql(@genre)
     end
