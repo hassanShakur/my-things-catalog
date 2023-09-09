@@ -3,7 +3,7 @@ require_relative '../classes/item/item'
 
 describe Genre do
   before :each do
-    @genre = Genre.new('RNB')
+    @genre = Genre.new('Comedy')
   end
 
   describe '#new' do
@@ -14,7 +14,7 @@ describe Genre do
 
   describe 'instance variables' do
     it 'returns correct instance variables' do
-      expect(@genre.name).to eq('RNB')
+      expect(@genre.name).to eq('Comedy')
     end
   end
 

@@ -24,7 +24,7 @@ describe Book do
       expect(archive_status).to eq(true)
     end
 
-    it 'sets archived true if in older than 10 years' do
+    it 'sets archived true if is older than 10 years' do
       @book = Book.new('Test pub', 'good', 2001)
       archive_status = @book.move_to_archive
       expect(archive_status).to eq(true)
