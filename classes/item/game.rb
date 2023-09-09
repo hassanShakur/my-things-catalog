@@ -6,7 +6,7 @@ class Game < Item
   def initialize(multiplayer, last_played_at, publish_date)
     super(publish_date)
     @multiplayer = multiplayer
-    @last_played_at = Time.new(last_played_at)
+    @last_played_at = Time.new(last_played_at.to_s)
   end
 
   private
