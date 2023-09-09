@@ -30,6 +30,8 @@ class App
   include ItemCreators
   include ItemPresenters
   include ObjectCreators
+  include OptionsDisplay
+  include OptionsRouter
   include UIBeautifiers
   include UserFeedback
 

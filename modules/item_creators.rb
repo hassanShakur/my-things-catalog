@@ -24,4 +24,12 @@ module ItemCreators
     @music_albums << MusicAlbum.new(on_spotify, publish_date)
     notify_success_creation('music album')
   end
+
+  def create_movie
+    notify_start_creation('movie')
+    publish_date = fetch_date
+    silent = fetch_valid_bool
+    @movies << Movie.new(silent, publish_date)
+    notify_success_creation('music album')
+  end
 end
