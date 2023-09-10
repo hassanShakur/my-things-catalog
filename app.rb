@@ -19,6 +19,10 @@ require_relative 'modules/creators/item_creators'
 require_relative 'modules/creators/object_creators'
 require_relative 'modules/creators/ref_item_link_creators'
 
+# Input
+require_relative 'modules/input/data_fetchers'
+require_relative 'modules/input/input_validators'
+
 # Loaders
 require_relative 'modules/loaders/item_data_loaders'
 require_relative 'modules/loaders/ref_data_loaders'
@@ -39,8 +43,6 @@ require_relative 'modules/storage/item_data_savers'
 require_relative 'modules/storage/ref_data_savers'
 
 # Ui
-require_relative 'modules/ui/data_fetchers'
-require_relative 'modules/ui/input_validators'
 require_relative 'modules/ui/ui_beautifiers'
 require_relative 'modules/ui/user_feedback'
 
@@ -48,6 +50,8 @@ class App
   include ItemCreators
   include ObjectCreators
   include RefItemLinkCreators
+  include DataFetchers
+  include InputValidators
   include ItemDataLoaders
   include RefDataLoaders
   include AppLogic
@@ -57,8 +61,6 @@ class App
   include ItemPresenters
   include ItemDataSavers
   include RefDataSavers
-  include DataFetchers
-  include InputValidators
   include UIBeautifiers
   include UserFeedback
 
@@ -83,5 +85,12 @@ class App
     load_refs
     load_items
     load_refs_items_list
+  end
+
+  def quit
+    puts "\nSaving data and quitting..."
+    store_items
+    store_refs
+    puts 'Thank you for using the App! Have a nice time!'
   end
 end

@@ -13,9 +13,7 @@ def main
     app.show_extra_options(choice)
   end
 
-  app.store_items
-  app.store_refs
-  puts 'Thank you for using the App! Have a nice time!'
+  app.quit
 end
 
 main
