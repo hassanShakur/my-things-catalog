@@ -1,12 +1,23 @@
 module DataSavers
   def save_data
-    books_data = []
-    @books.each do |book|
-      item_hash = save_unique_attrs(book)
-      item_hash = save_common_attrs(book, item_hash)
-      books_data << item_hash
+    save_item_data(@books, 'books')
+    save_item_data(@games, 'games')
+    save_item_data(@movies, 'movies')
+    save_item_data(@genres, 'genres')
+    save_item_data(@labels, 'labels')
+    save_item_data(@sources, 'sources')
+    save_item_data(@authors, 'authors')
+    save_item_data(@music_albums, 'music_albums')
+  end
+
+  def save_item_data(item_list, file_name)
+    data_arr = []
+    item_list.each do |item|
+      item_hash = save_unique_attrs(item)
+      item_hash = save_common_attrs(item, item_hash)
+      data_arr << item_hash
     end
-    create_file('books.json', books_data.to_json)
+    create_file("#{file_name}.json", data_arr.to_json) unless data_arr.empty?
   end
 
   def create_file(file_name, data)

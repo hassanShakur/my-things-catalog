@@ -44,7 +44,7 @@ class App
   include UserFeedback
 
   def initialize
-    @books = load_books('books.json')
+    @books = []
     @games = []
     @movies = []
     @genres = []
@@ -56,5 +56,6 @@ class App
 
   def run
     puts "Welcome to School library App!\n"
+    load_data
   end
 end

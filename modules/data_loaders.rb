@@ -1,17 +1,29 @@
 module DataLoaders
-  def load_books(path)
+  def load_data
+    @books = load_item_data('books.json')
+    @games = load_item_data('games.json')
+    @movies = load_item_data('movies.json')
+    @genres = load_item_data('genres.json')
+    @labels = load_item_data('labels.json')
+    @sources = load_item_data('sources.json')
+    @authors = load_item_data('authors.json')
+    @music_albums = load_item_data('music_albums.json')
+  end
+
+  def load_item_data(path)
     file_path = "data/#{path}"
     return [] unless File.exist?(file_path)
 
-    books = []
-    books_data = load_file(file_path)
+    item_data = []
+    hash_data = load_file(file_path)
 
-    books_data.each do |book|
-      new_book = load_unique_attrs(book)
-      books << new_book
+    hash_data.each do |item|
+      new_item = load_unique_attrs(item)
+      new_item = load_common_attrs(new_item, item)
+      item_data << new_item
     end
 
-    books
+    item_data
   end
 
   def load_file(path)
