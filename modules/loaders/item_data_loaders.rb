@@ -54,10 +54,10 @@ module ItemDataLoaders
   end
 
   def load_common_attrs(item, data)
-    item.author = @authors.find { |author| data['author'] = author.id }
-    item.genre = @genres.find { |genre| data['genre'] = genre.id }
-    item.source = @sources.find { |source| data['source'] = source.id }
-    item.label = @labels.find { |label| data['label'] = label.id }
+    item.author = @authors.find { |author| data['author'] == author.id }
+    item.genre = @genres.find { |genre| data['genre'] == genre.id }
+    item.source = @sources.find { |source| data['source'] == source.id }
+    item.label = @labels.find { |label| data['label'] == label.id }
     item.publish_date = Time.new(data['publish_date'])
     item
   end

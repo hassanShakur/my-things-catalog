@@ -68,12 +68,12 @@ module OptionsDisplay
 
   def display_item_links(item)
     puts "\n
-          1. Add #{item} author
-          2. Add #{item} source
-          3. Add #{item} genre
-          4. Add #{item} label
-          5. Exit\n
-          "
+      1. Add #{item} author
+      2. Add #{item} source
+      3. Add #{item} genre
+      4. Add #{item} label
+      5. Exit\n
+      "
     print 'Enter your choice: '
   end
 end

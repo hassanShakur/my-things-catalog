@@ -1,19 +1,4 @@
 module RefItemLinkCreators
-  def create_item_link(item)
-    display_item_links(item)
-    choice = validate_input(gets.chomp.to_i, 5)
-    return if choice == 5
-
-    case choice
-    when 1 then create_ref_item_link('author', item)
-    when 2 then create_ref_item_link('source', item)
-    when 3 then create_ref_item_link('genre', item)
-    when 4 then create_ref_item_link('label', item)
-    else
-      puts 'Invalid choice!'
-    end
-  end
-
   def create_ref_item_link(ref, item)
     ref_instance = fetch_ref(ref)
     item_instance = fetch_item(item)

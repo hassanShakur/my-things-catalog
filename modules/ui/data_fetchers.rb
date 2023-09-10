@@ -10,7 +10,8 @@ module DataFetchers
   end
 
   def fetch_date(date_type = 'publish date')
-    fetch_string("#{date_type} [yy/mm/dd]")
+    date = fetch_string("#{date_type} [yy/mm/dd]")
+    vaidate_date(date)
   end
 
   def fetch_valid_bool(title)
