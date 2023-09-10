@@ -42,4 +42,15 @@ module AppLogic
       puts 'Invalid choice!'
     end
   end
+
+  def list_item_links(choice)
+    case choice
+    when 1 then create_item_link('book')
+    when 2 then create_item_link('game')
+    when 3 then create_item_link('movie')
+    when 4 then create_item_link('music_album')
+    else
+      puts 'Invalid choice!'
+    end
+  end
 end

@@ -9,9 +9,9 @@ module RefDataSavers
   def save_ref_data(item_list, file_name)
     data_arr = []
     item_list.each do |item|
-      item_hash = save_unique_attrs(item)
-      item_hash = save_common_attrs(item, item_hash)
-      item_hash = save_ref_item_list(item, item_hash)
+      unique_attrs_hash = save_unique_ref_attrs(item)
+      common_attrs_hash = save_common_ref_attrs(item)
+      item_hash = {}.merge(unique_attrs_hash, common_attrs_hash)
       data_arr << item_hash
     end
     create_file("#{file_name}.json", data_arr.to_json) unless data_arr.empty?
@@ -21,7 +21,7 @@ module RefDataSavers
     File.write("data/#{file_name}", data)
   end
 
-  def save_unique_attrs(item)
+  def save_unique_ref_attrs(item)
     if item.instance_of?(Genre) || item.instance_of?(Source)
       { 'name' => item.name }
     elsif item.instance_of?(Label)
@@ -33,12 +33,11 @@ module RefDataSavers
     end
   end
 
-  def save_common_attrs(item, hash)
-    hs = {
+  def save_common_ref_attrs(item)
+    {
       'id' => item.id.to_s,
       'class' => item.class
     }
-    hash.merge(hs)
   end
 
   def save_ref_item_list(ref_item, hash)

@@ -7,8 +7,8 @@ def main
   loop do
     app.show_initial_options
     input = gets.chomp.to_i
-    choice = app.validate_input(input, 5)
-    break if choice == 5
+    choice = app.validate_input(input, 6)
+    break if choice == 6
 
     app.show_extra_options(choice)
   end

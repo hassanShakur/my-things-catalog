@@ -5,6 +5,8 @@ module OptionsRouter
       show_ref_options(choice)
     when 2, 4
       show_item_options(choice)
+    when 5
+      show_ref_item_links
     else
       puts 'Invalid choice!'
     end
@@ -46,5 +48,13 @@ module OptionsRouter
     else
       puts 'Invalid choice!'
     end
+  end
+
+  def show_ref_item_links
+    show_ref_item_link_options
+    choice = validate_input(gets.chomp.to_i, 5)
+    return if choice == 5
+
+    list_item_links(choice)
   end
 end

@@ -17,6 +17,7 @@ require_relative 'classes/item/music_album'
 # Creators
 require_relative 'modules/creators/item_creators'
 require_relative 'modules/creators/object_creators'
+require_relative 'modules/creators/ref_item_link_creators'
 
 # Loaders
 require_relative 'modules/loaders/item_data_loaders'
@@ -44,19 +45,20 @@ require_relative 'modules/ui/ui_beautifiers'
 require_relative 'modules/ui/user_feedback'
 
 class App
-  include AppLogic
-  include DataFetchers
+  include ItemCreators
+  include ObjectCreators
+  include RefItemLinkCreators
   include ItemDataLoaders
   include RefDataLoaders
+  include AppLogic
+  include OptionsRouter
+  include OptionsDisplay
   include DataPresenters
+  include ItemPresenters
   include ItemDataSavers
   include RefDataSavers
+  include DataFetchers
   include InputValidators
-  include ItemCreators
-  include ItemPresenters
-  include ObjectCreators
-  include OptionsDisplay
-  include OptionsRouter
   include UIBeautifiers
   include UserFeedback
 

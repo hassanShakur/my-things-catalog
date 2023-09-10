@@ -9,8 +9,9 @@ module ItemDataSavers
   def save_item_data(item_list, file_name)
     data_arr = []
     item_list.each do |item|
-      item_hash = save_unique_attrs(item)
-      item_hash = save_common_attrs(item, item_hash)
+      unique_attrs_hash = save_unique_item_attrs(item)
+      common_attrs_hash = save_common_item_attrs(item)
+      item_hash = {}.merge(unique_attrs_hash, common_attrs_hash)
       data_arr << item_hash
     end
     create_file("#{file_name}.json", data_arr.to_json) unless data_arr.empty?
@@ -20,7 +21,7 @@ module ItemDataSavers
     File.write("data/#{file_name}", data)
   end
 
-  def save_unique_attrs(item)
+  def save_unique_item_attrs(item)
     if item.instance_of?(Book)
       { 'publisher' => item.publisher, 'cover_state' => item.cover_state }
     elsif item.instance_of?(Game)
@@ -32,8 +33,8 @@ module ItemDataSavers
     end
   end
 
-  def save_common_attrs(item, hash)
-    hs = {
+  def save_common_item_attrs(item)
+    {
       'id' => item.id.to_s,
       'class' => item.class,
       'publish_date' => item.publish_date.to_s,
@@ -42,6 +43,5 @@ module ItemDataSavers
       'source' => item.source&.id,
       'label' => item.label&.id
     }
-    hash.merge(hs)
   end
 end

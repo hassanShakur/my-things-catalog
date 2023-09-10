@@ -14,7 +14,7 @@ module RefDataLoaders
     hash_data = load_file(file_path)
 
     hash_data.each do |item|
-      new_item = load_unique_attrs(item)
+      new_item = load_unique_ref_attrs(item)
       item_data << new_item
     end
 
@@ -28,7 +28,7 @@ module RefDataLoaders
     data
   end
 
-  def load_unique_attrs(item)
+  def load_unique_ref_attrs(item)
     id = item['id']
 
     case item['class']
@@ -43,11 +43,13 @@ module RefDataLoaders
       first_name = item['first_name']
       last_name = item['last_name']
       Author.new(first_name, last_name, id: id)
-    else
+    when 'Label'
       @labels_items_hash << { 'id' => id, 'items' => item['items'] }
       title = item['title']
       color = item['color']
       Label.new(title, color, id: id)
+    else
+      puts "Invalid class. Got #{item['class']} in refs!"
     end
   end
 

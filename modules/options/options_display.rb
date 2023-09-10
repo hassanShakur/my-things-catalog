@@ -5,7 +5,8 @@ module OptionsDisplay
     2. List catalog items (Eg. List all books)
     3. Create item reference (Eg. Author)
     4. Create catalog item (Eg. Book)
-    5. Exit\n
+    5. Add a item property (Eg. Add book author)
+    6. Exit\n
     "
     print 'Enter your choice: '
   end
@@ -51,6 +52,28 @@ module OptionsDisplay
       4. Create a source
       5. Exit\n
       "
+    print 'Enter your choice: '
+  end
+
+  def show_ref_item_link_options
+    puts "\n
+      1. Add prop to book
+      2. Add prop to game
+      3. Add prop to movie
+      4. Add prop to music album
+      5. Exit\n
+      "
+    print 'Enter your choice: '
+  end
+
+  def display_item_links(item)
+    puts "\n
+          1. Add #{item} author
+          2. Add #{item} source
+          3. Add #{item} genre
+          4. Add #{item} label
+          5. Exit\n
+          "
     print 'Enter your choice: '
   end
 end

@@ -14,7 +14,7 @@ module ItemDataLoaders
     hash_data = load_file(file_path)
 
     hash_data.each do |item|
-      new_item = load_unique_attrs(item)
+      new_item = load_unique_item_attrs(item)
       new_item = load_common_attrs(new_item, item)
       item_data << new_item
     end
@@ -29,7 +29,7 @@ module ItemDataLoaders
     data
   end
 
-  def load_unique_attrs(item)
+  def load_unique_item_attrs(item)
     id = item['id']
     publish_date = item['publish_date']
 
@@ -45,9 +45,11 @@ module ItemDataLoaders
     when 'Movie'
       silent = item['silent']
       Movie.new(silent, publish_date, id: id)
-    else
+    when 'MusicAlbum'
       on_spotify = item['on_spotify']
       MusicAlbum.new(on_spotify, publish_date, id: id)
+    else
+      puts "Invalid class. Got #{item['class']} in items!"
     end
   end
 

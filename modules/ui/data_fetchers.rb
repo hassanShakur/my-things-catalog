@@ -4,6 +4,11 @@ module DataFetchers
     gets.chomp
   end
 
+  def fetch_int(prompt, max)
+    print "#{prompt.capitalize}: "
+    validate_input(gets.chomp.to_i, max)
+  end
+
   def fetch_date(date_type = 'publish date')
     fetch_string("#{date_type} [yy/mm/dd]")
   end
