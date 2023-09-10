@@ -16,6 +16,7 @@ require_relative 'classes/item/music_album'
 # Modules
 require_relative 'modules/app_logic'
 require_relative 'modules/data_fetchers'
+require_relative 'modules/data_loaders'
 require_relative 'modules/data_presenters'
 require_relative 'modules/data_savers'
 require_relative 'modules/input_validators'
@@ -30,6 +31,7 @@ require_relative 'modules/user_feedback'
 class App
   include AppLogic
   include DataFetchers
+  include DataLoaders
   include DataPresenters
   include DataSavers
   include InputValidators
