@@ -1,1 +1,1 @@
-[{"first_name":"Jane","last_name":"Doe","id":"1694346715","class":"Author"},{"first_name":"Tiffany","last_name":"Hadish","id":"1694346734","class":"Author"},{"first_name":"Stephen","last_name":"King","id":"1694346946","class":"Author"}]
+[{"first_name":"Jane","last_name":"Doe","id":"1694346715","class":"Author","items":[null,null]},{"first_name":"Tiffany","last_name":"Hadish","id":"1694346734","class":"Author","items":[null,null]},{"first_name":"Stephen","last_name":"King","id":"1694346946","class":"Author","items":[null,null,"1694358743"]}]

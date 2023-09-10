@@ -1,6 +1,8 @@
 module DataPresenters
   def display_labels
     print_border
+    return no_item_created('label') if @labels.empty?
+
     show_list_title('Label')
 
     @labels.each_with_index do |label, index|
@@ -11,6 +13,8 @@ module DataPresenters
 
   def display_genres
     print_border
+    return no_item_created('genre') if @genres.empty?
+
     show_list_title('Genre')
 
     @genres.each_with_index do |genre, index|
@@ -21,6 +25,8 @@ module DataPresenters
 
   def display_authors
     print_border
+    return no_item_created('author') if @authors.empty?
+
     show_list_title('Author')
 
     @authors.each_with_index do |author, index|
@@ -31,6 +37,8 @@ module DataPresenters
 
   def display_sources
     print_border
+    return no_item_created('source') if @sources.empty?
+
     show_list_title('Source')
 
     @sources.each_with_index do |source, index|

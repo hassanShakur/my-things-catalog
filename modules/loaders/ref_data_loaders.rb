@@ -45,9 +45,7 @@ module RefDataLoaders
       Author.new(first_name, last_name, id: id)
     when 'Label'
       @labels_items_hash << { 'id' => id, 'items' => item['items'] }
-      title = item['title']
-      color = item['color']
-      Label.new(title, color, id: id)
+      Label.new(item['title'], item['color'], id: id)
     else
       puts "Invalid class. Got #{item['class']} in refs!"
     end

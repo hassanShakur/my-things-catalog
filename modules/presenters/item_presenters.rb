@@ -1,6 +1,8 @@
 module ItemPresenters
   def display_books
     print_border
+    return no_item_created('book') if @books.empty?
+
     show_list_title('Book')
 
     @books.each_with_index do |book, index|
@@ -13,6 +15,8 @@ module ItemPresenters
 
   def display_games
     print_border
+    return no_item_created('game') if @games.empty?
+
     show_list_title('Game')
 
     @games.each_with_index do |game, index|
@@ -25,6 +29,8 @@ module ItemPresenters
 
   def display_movies
     print_border
+    return no_item_created('movie') if @movies.empty?
+
     show_list_title('Movie')
 
     @movies.each_with_index do |movie, index|
@@ -37,6 +43,8 @@ module ItemPresenters
 
   def display_music_albums
     print_border
+    return no_item_created('music_album') if @music_albums.empty?
+
     show_list_title('Music album')
 
     @music_albums.each_with_index do |music_album, index|

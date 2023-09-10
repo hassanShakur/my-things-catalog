@@ -11,7 +11,8 @@ module RefDataSavers
     item_list.each do |item|
       unique_attrs_hash = save_unique_ref_attrs(item)
       common_attrs_hash = save_common_ref_attrs(item)
-      item_hash = {}.merge(unique_attrs_hash, common_attrs_hash)
+      ref_items_list = save_ref_item_list(item)
+      item_hash = {}.merge(unique_attrs_hash, common_attrs_hash, ref_items_list)
       data_arr << item_hash
     end
     create_file("#{file_name}.json", data_arr.to_json) unless data_arr.empty?
@@ -40,10 +41,9 @@ module RefDataSavers
     }
   end
 
-  def save_ref_item_list(ref_item, hash)
+  def save_ref_item_list(ref_item)
     items_arr = []
     ref_item.items.each { |item| items_arr << item&.id }
-    items_hash = { 'items' => items_arr }
-    hash.merge(items_hash)
+    { 'items' => items_arr }
   end
 end
