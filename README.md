@@ -4,7 +4,7 @@
 
 The project idea is from the [Microverse Curriculum](https://www.microverse.org/) Ruby & Databases and Interviewing Module. It is created in `Ruby` terminal-ly. It helps you record and keep trach of stuff. Generally there are 2 types of objects: `References` and `Items`. They share a `one to many` relationship with each other respectively. Example a `Book` object item can only have 1 `Author` object but the reverse can be multiple.
 
-The data is stored in `json` format in the `data` folder 👉 [here](data) once you quit the app. Restart the app and the data will be loaded right up. If you're interested in `rspec test files` then check out the `spec` folder 👉 [here](spec). There are also some `SQL` commands to create the related `database` and `tables` in 👉 [here](db_sql).
+The data is stored in `json` format in the `data` folder 👉 [here](data) once you quit the app. Restart the app and the data will be loaded right up. If you're interested in `rspec test files` then check out the `spec` folder 👉 [here](spec). There are also some `SQL` commands to create the related `database` and `tables` in 👉 [here](schema.sql).
 
 ## How to Use?
 
