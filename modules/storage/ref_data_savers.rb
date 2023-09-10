@@ -43,7 +43,7 @@ module RefDataSavers
 
   def save_ref_item_list(ref_item, hash)
     items_arr = []
-    ref_item.items.each { |item| items_arr << item.id }
+    ref_item.items.each { |item| items_arr << item&.id }
     items_hash = { 'items' => items_arr }
     hash.merge(items_hash)
   end

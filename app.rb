@@ -14,21 +14,34 @@ require_relative 'classes/item/movie'
 require_relative 'classes/item/music_album'
 
 # Modules
-require_relative 'modules/app_logic'
-require_relative 'modules/data_fetchers'
-require_relative 'modules/data_loaders/item_data_loaders'
-require_relative 'modules/data_loaders/ref_data_loaders'
-require_relative 'modules/data_presenters'
-require_relative 'modules/data_savers/item_data_savers'
-require_relative 'modules/data_savers/ref_data_savers'
-require_relative 'modules/input_validators'
-require_relative 'modules/item_creators'
-require_relative 'modules/item_presenters'
-require_relative 'modules/object_creators'
-require_relative 'modules/options_display'
-require_relative 'modules/options_router'
-require_relative 'modules/ui_beautifiers'
-require_relative 'modules/user_feedback'
+# Creators
+require_relative 'modules/creators/item_creators'
+require_relative 'modules/creators/object_creators'
+
+# Loaders
+require_relative 'modules/loaders/item_data_loaders'
+require_relative 'modules/loaders/ref_data_loaders'
+
+# Logic
+require_relative 'modules/logic/app_logic'
+require_relative 'modules/logic/options_router'
+
+# Options
+require_relative 'modules/options/options_display'
+
+# Presenters
+require_relative 'modules/presenters/data_presenters'
+require_relative 'modules/presenters/item_presenters'
+
+# Storage
+require_relative 'modules/storage/item_data_savers'
+require_relative 'modules/storage/ref_data_savers'
+
+# Ui
+require_relative 'modules/ui/data_fetchers'
+require_relative 'modules/ui/input_validators'
+require_relative 'modules/ui/ui_beautifiers'
+require_relative 'modules/ui/user_feedback'
 
 class App
   include AppLogic
