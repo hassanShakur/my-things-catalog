@@ -1,3 +1,5 @@
+require 'json'
+
 # Classes
 require_relative 'classes/label'
 require_relative 'classes/author'
@@ -15,6 +17,7 @@ require_relative 'classes/item/music_album'
 require_relative 'modules/app_logic'
 require_relative 'modules/data_fetchers'
 require_relative 'modules/data_presenters'
+require_relative 'modules/data_savers'
 require_relative 'modules/input_validators'
 require_relative 'modules/item_creators'
 require_relative 'modules/item_presenters'
@@ -28,6 +31,7 @@ class App
   include AppLogic
   include DataFetchers
   include DataPresenters
+  include DataSavers
   include InputValidators
   include ItemCreators
   include ItemPresenters
@@ -38,20 +42,17 @@ class App
   include UserFeedback
 
   def initialize
-    @books = []
+    @books = load_books('books.json')
     @games = []
     @movies = []
-    @music_albums = []
-
-    @authors = []
     @genres = []
     @labels = []
     @sources = []
+    @authors = []
+    @music_albums = []
   end
 
   def run
     puts "Welcome to School library App!\n"
   end
-
-  def save_data; end
 end
