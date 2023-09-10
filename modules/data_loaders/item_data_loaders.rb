@@ -1,12 +1,8 @@
-module DataLoaders
-  def load_data
+module ItemDataLoaders
+  def load_items
     @books = load_item_data('books.json')
     @games = load_item_data('games.json')
     @movies = load_item_data('movies.json')
-    @genres = load_item_data('genres.json')
-    @labels = load_item_data('labels.json')
-    @sources = load_item_data('sources.json')
-    @authors = load_item_data('authors.json')
     @music_albums = load_item_data('music_albums.json')
   end
 
@@ -56,10 +52,10 @@ module DataLoaders
   end
 
   def load_common_attrs(item, data)
-    item.author = data['author']
-    item.genre = data['genre']
-    item.source = data['source']
-    item.label = data['label']
+    item.author = @authors.find { |author| data['author'] = author.id }
+    item.genre = @genres.find { |genre| data['genre'] = genre.id }
+    item.source = @sources.find { |source| data['source'] = source.id }
+    item.label = @labels.find { |label| data['label'] = label.id }
     item.publish_date = Time.new(data['publish_date'])
     item
   end

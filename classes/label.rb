@@ -1,8 +1,8 @@
 class Label
-  attr_accessor :title, :color
+  attr_accessor :title, :color, :id
 
-  def initialize(title, color)
-    @id = Time.new.to_i
+  def initialize(title, color, id: Time.new.to_i)
+    @id = id
     @title = title
     @color = color
     @items = []

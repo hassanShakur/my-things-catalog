@@ -1,9 +1,9 @@
 class Genre
-  attr_accessor :name
+  attr_accessor :name, :id
 
-  def initialize(name)
+  def initialize(name, id: Time.new.to_i)
+    @id = id
     @name = name
-    @id = Time.new.to_i
     @items = []
   end
 

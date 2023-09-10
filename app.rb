@@ -16,9 +16,9 @@ require_relative 'classes/item/music_album'
 # Modules
 require_relative 'modules/app_logic'
 require_relative 'modules/data_fetchers'
-require_relative 'modules/data_loaders'
+require_relative 'modules/data_loaders/item_data_loaders'
 require_relative 'modules/data_presenters'
-require_relative 'modules/data_savers'
+require_relative 'modules/data_savers/item_data_savers'
 require_relative 'modules/input_validators'
 require_relative 'modules/item_creators'
 require_relative 'modules/item_presenters'
@@ -31,9 +31,9 @@ require_relative 'modules/user_feedback'
 class App
   include AppLogic
   include DataFetchers
-  include DataLoaders
+  include ItemDataLoaders
   include DataPresenters
-  include DataSavers
+  include ItemDataSavers
   include InputValidators
   include ItemCreators
   include ItemPresenters
@@ -56,6 +56,7 @@ class App
 
   def run
     puts "Welcome to School library App!\n"
-    load_data
+    load_refs
+    load_items
   end
 end

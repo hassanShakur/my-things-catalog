@@ -1,8 +1,8 @@
 class Source
-  attr_accessor :name
+  attr_accessor :name, :id
 
-  def initialize(name)
-    @id = Time.new.to_i
+  def initialize(name, id: Time.new.to_i)
+    @id = id
     @name = name
     @items = []
   end

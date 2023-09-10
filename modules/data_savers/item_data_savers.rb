@@ -1,12 +1,8 @@
-module DataSavers
-  def save_data
+module ItemDataSavers
+  def store_refs
     save_item_data(@books, 'books')
     save_item_data(@games, 'games')
     save_item_data(@movies, 'movies')
-    save_item_data(@genres, 'genres')
-    save_item_data(@labels, 'labels')
-    save_item_data(@sources, 'sources')
-    save_item_data(@authors, 'authors')
     save_item_data(@music_albums, 'music_albums')
   end
 
