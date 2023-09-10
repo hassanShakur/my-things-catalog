@@ -1,5 +1,5 @@
 class Author
-  attr_accessor :first_name, :last_name, :id
+  attr_accessor :first_name, :last_name, :id, :items
 
   def initialize(first_name, last_name, id: Time.new.to_i)
     @id = id

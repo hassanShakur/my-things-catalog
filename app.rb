@@ -17,8 +17,10 @@ require_relative 'classes/item/music_album'
 require_relative 'modules/app_logic'
 require_relative 'modules/data_fetchers'
 require_relative 'modules/data_loaders/item_data_loaders'
+require_relative 'modules/data_loaders/ref_data_loaders'
 require_relative 'modules/data_presenters'
 require_relative 'modules/data_savers/item_data_savers'
+require_relative 'modules/data_savers/ref_data_savers'
 require_relative 'modules/input_validators'
 require_relative 'modules/item_creators'
 require_relative 'modules/item_presenters'
@@ -32,8 +34,10 @@ class App
   include AppLogic
   include DataFetchers
   include ItemDataLoaders
+  include RefDataLoaders
   include DataPresenters
   include ItemDataSavers
+  include RefDataSavers
   include InputValidators
   include ItemCreators
   include ItemPresenters
@@ -52,11 +56,17 @@ class App
     @sources = []
     @authors = []
     @music_albums = []
+
+    @authors_items_hash = []
+    @sources_items_hash = []
+    @labels_items_hash = []
+    @genres_items_hash = []
   end
 
   def run
     puts "Welcome to School library App!\n"
     load_refs
     load_items
+    load_refs_items_list
   end
 end

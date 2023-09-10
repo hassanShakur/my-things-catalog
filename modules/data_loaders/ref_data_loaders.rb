@@ -33,19 +33,44 @@ module RefDataLoaders
 
     case item['class']
     when 'Genre'
-      name = item['name']
-      Genre.new(name, id: id)
+      @genres_items_hash << { 'id' => id, 'items' => item['items'] }
+      Genre.new(item['name'], id: id)
     when 'Source'
-      name = item['name']
-      Source.new(name, id: id)
+      @sources_items_hash << { 'id' => id, 'items' => item['items'] }
+      Source.new(item['name'], id: id)
     when 'Author'
+      @authors_items_hash << { 'id' => id, 'items' => item['items'] }
       first_name = item['first_name']
       last_name = item['last_name']
       Author.new(first_name, last_name, id: id)
     else
+      @labels_items_hash << { 'id' => id, 'items' => item['items'] }
       title = item['title']
       color = item['color']
       Label.new(title, color, id: id)
+    end
+  end
+
+  def load_refs_items_list
+    load_ref_items_list(@genres, @genres_items_hash)
+    load_ref_items_list(@labels, @labels_items_hash)
+    load_ref_items_list(@sources, @sources_items_hash)
+    load_ref_items_list(@authors, @authors_items_hash)
+  end
+
+  def load_ref_items_list(refs_arr, items_hash)
+    all_item_instances = [].concat(@books, @games, @genres, @labels)
+
+    items_hash.each do |item_hash|
+      ref_instance = refs_arr.find { |ref| ref.id == item_hash['id'] }
+
+      items_instance_arr = []
+      item_hash.each do |item_id|
+        item_instance = all_item_instances.find { |instance| instance.id == item_id }
+        items_instance_arr << item_instance
+      end
+
+      ref_instance.items = items_instance_arr
     end
   end
 end
