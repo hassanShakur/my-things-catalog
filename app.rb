@@ -81,7 +81,7 @@ class App
   end
 
   def run
-    puts "Welcome to School library App!\n"
+    puts "Welcome to My Things Catalog App!\n"
     load_refs
     load_items
     load_refs_items_list
